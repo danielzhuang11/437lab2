@@ -18,21 +18,19 @@ function client(dir){
     // get the data from the server
     client.on('data', (data) => {
         const dataArr = data.toString().split(",");
-        let t = dataArr[0];
-        let v = dataArr[1];
-        let u = dataArr[2];
+        let t = dataArr[0].substring(5);
+        let u = dataArr[1];
+        let v = dataArr[2];
         console.log(t.toString());
         console.log(v.toString());
         console.log(u.toString());
-        document.getElementById("bluetooth").innerHTML = data;
         document.getElementById("temperature").innerHTML = t;
-        document.getElementById("voltage").innerHTML = v;
+        document.getElementById("speed").innerHTML = v;
         document.getElementById("ultrasonic").innerHTML = u;
         console.log(data.toString());
         client.end();
         client.destroy();
     });
-
     client.on('end', () => {
         console.log('disconnected from server');
     });
